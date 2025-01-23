@@ -6,7 +6,7 @@ class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
 
-    # Relación inversa para acceder a los productos de una categoría
+    # Relación inversa para acceder a los productos de esta categoría
     products = db.relationship('Product', backref='category', lazy=True)
 
 class Product(db.Model):
@@ -19,7 +19,7 @@ class Product(db.Model):
     stock = db.Column(db.Integer, nullable=False)
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
 
-    # Relación: category_id hace referencia al modelo Category
+    # Método para convertir el producto a un diccionario
     def to_dict(self):
         return {
             'id': self.id,

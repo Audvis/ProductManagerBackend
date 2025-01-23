@@ -6,8 +6,8 @@ from flask_cors import CORS
 def create_app():
     app = Flask(__name__)
 
-# Configura CORS para permitir solicitudes desde cualquier origen
-    CORS(app)
+# Configurar CORS
+    CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 
     # Configuración
     app.config.from_object('app.config.Config')

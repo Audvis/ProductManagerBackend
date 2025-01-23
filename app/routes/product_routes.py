@@ -35,17 +35,7 @@ def create_product():
 @product_bp.route('/', methods=['GET'])
 def list_products():
     products = Product.query.all()
-    result = [
-        {
-            'id': p.id,
-            'name': p.name,
-            'description': p.description,
-            'price': p.price,
-            'stock': p.stock,
-            'category': p.category.name
-        }
-        for p in products
-    ]
+    result = [p.to_dict() for p in products]  # Usa el método to_dict del modelo
     return jsonify(result), 200
 
 @product_bp.route('/<int:id>', methods=['PUT'])
@@ -73,7 +63,8 @@ def update_product(id):
     product.category_id = category_id
     db.session.commit()
 
-    return jsonify({'message': 'Product successfully updated'}), 200
+    return jsonify(product.to_dict()), 200
+
 
 @product_bp.route('/<int:id>', methods=['DELETE'])
 def delete_product(id):
