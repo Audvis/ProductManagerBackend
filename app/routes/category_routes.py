@@ -7,16 +7,18 @@ category_bp = Blueprint('category_bp', __name__)
 @category_bp.route('/', methods=['POST'])
 def create_category():
     data = request.json
-    name = data.get('name')
+    name = data.get('name', '').strip()
 
+    # Validación
     if not name:
-        return jsonify({'error': 'Category name is required'}), 400
+        return jsonify({'error': 'Name cannot be empty'}), 400
 
     new_category = Category(name=name)
     db.session.add(new_category)
     db.session.commit()
 
     return jsonify({'message': 'Category successfully created'}), 201
+
 
 @category_bp.route('/', methods=['GET'])
 def list_categories():
