@@ -27,7 +27,7 @@ class Product(db.Model):
             'description': self.description,
             'price': self.price,
             'stock': self.stock,
-            'categoria': {
+            'category': {
                 'id': self.category.id,
                 'name': self.category.name
             } if self.category else None
