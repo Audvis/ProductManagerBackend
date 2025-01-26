@@ -6,8 +6,8 @@ Este es el backend de la aplicación que permite la gestión de productos y cate
 
 #### **Paso 1: Clona el repositorio**
 ```bash
-git clone <URL_DEL_REPOSITORIO_BACKEND>
-cd <nombre-del-repositorio-backend>
+git clone https://github.com/Audvis/ProductManagerBackend.git
+cd ProductManagerBackend
 ```
 
 #### **Paso 2: Configura el entorno virtual**
@@ -57,22 +57,72 @@ El backend estará disponible en `http://127.0.0.1:5000`.
   - Validaciones para evitar duplicados y asegurar la consistencia de los datos.
 - API RESTful construida con Flask.
 
+## **3. Rutas de la API**
+
+### **Productos**
+
+- **GET** `/products/`  
+  Obtiene la lista de todos los productos.
+
+- **POST** `/products/`  
+  Crea un nuevo producto.  
+  - **Body JSON:**
+    ```json
+    {
+      "name": "Product Name",
+      "description": "Product Description",
+      "price": 100.50,
+      "stock": 10,
+      "category_id": 1
+    }
+    ```
+
+- **PUT** `/products/<id>`  
+  Actualiza un producto existente.  
+  - **Body JSON:** (similar al POST)
+
+- **DELETE** `/products/<id>`  
+  Elimina un producto por su ID.
+
 ---
 
-## **3. Requisitos previos**
+### **Categorías**
+
+- **GET** `/categories/`  
+  Obtiene la lista de todas las categorías.
+
+- **POST** `/categories/`  
+  Crea una nueva categoría.  
+  - **Body JSON:**
+    ```json
+    {
+      "name": "Category Name"
+    }
+    ```
+
+- **PUT** `/categories/<id>`  
+  Actualiza una categoría existente.  
+  - **Body JSON:** (similar al POST)
+
+- **DELETE** `/categories/<id>`  
+  Elimina una categoría por su ID.
+
+---
+
+## **4. Requisitos previos**
 
 - Python 3.8 o superior.
 - SQLite u otro sistema de base de datos compatible con SQLAlchemy (opcional).
 
 ---
 
-## **4. Notas adicionales**
+## **5. Notas adicionales**
 
 - Asegúrate de configurar las variables de entorno si usas una base de datos distinta de SQLite.
 - Para probar la API, puedes usar herramientas como Postman o cURL.
 
 ---
 
-## **5. Contacto**
+## **6. Contacto**
 Si tienes preguntas o encuentras problemas, no dudes en abrir un issue en el repositorio o contactar al desarrollador.
 
