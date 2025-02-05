@@ -14,6 +14,7 @@ class Product(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
+    apellido = db.Column(db.String(100), nullable=True)  # Ahora es opcional
     description = db.Column(db.String(255), nullable=True)
     price = db.Column(db.Float, nullable=False)
     stock = db.Column(db.Integer, nullable=False)
@@ -24,6 +25,7 @@ class Product(db.Model):
         return {
             'id': self.id,
             'name': self.name,
+            'apellido': self.apellido if self.apellido else 'No especificado',
             'description': self.description,
             'price': self.price,
             'stock': self.stock,

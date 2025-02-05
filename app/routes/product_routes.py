@@ -8,6 +8,7 @@ product_bp = Blueprint('product_bp', __name__)
 def create_product():
     data = request.json
     name = data.get('name', '').strip()
+    apellido = data.get('apellido', '').strip()
     description = data.get('description', '').strip()
     price = data.get('price')
     stock = data.get('stock')
@@ -26,6 +27,7 @@ def create_product():
     new_product = Product(
         name=name,
         description=description,
+        apellido=apellido,
         price=price,
         stock=stock,
         category_id=category_id
@@ -46,6 +48,7 @@ def list_products():
 def update_product(id):
     data = request.json
     name = data.get('name')
+    apellido = data.get('apellido')
     description = data.get('description')
     price = data.get('price')
     stock = data.get('stock')
@@ -62,6 +65,7 @@ def update_product(id):
 
     product.name = name
     product.description = description
+    product.apellido = apellido
     product.price = price
     product.stock = stock
     product.category_id = category_id
